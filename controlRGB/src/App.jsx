@@ -15,9 +15,7 @@ class App extends Component {
         return (
             <>
                 <h1>Control RGBA</h1>
-                <div>
-
-                </div>
+ 
                 <div className='frame'>
 
                 </div>

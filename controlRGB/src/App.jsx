@@ -3,14 +3,19 @@ import Slider from '@mui/material/Slider';
 import './App.css'
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            valueBlue:"0",
-            valueRed:"0",
-            valueGreen:"0",
+            valueRed: 0,
+            valueBlue: 0,
+            valueGreen: 0,
         }
     }
+
+    handleSlide(value) {
+        console.log(value)
+    }
+
     render() {
         return (
             <>
@@ -21,10 +26,17 @@ class App extends Component {
                 </div>
                 <div className='sliders'>
 
-                    <Slider defaultValue={this.valueBlue} aria-label="Default" valueLabelDisplay="auto" />
-                    <Slider defaultValue={this.valueRed} aria-label="Default" valueLabelDisplay="auto" />
-                    <Slider defaultValue={this.valueGreen} aria-label="Default" valueLabelDisplay="auto" />
+                    <Slider
+                        defaultValue={this.state.valueRed}
+                        aria-label="Red"
+                        valueLabelDisplay="auto"
+                        onChange={() => { this.handleSlide(event.target.value) }} />
 
+
+                    <Slider defaultValue={this.state.valueBlue} aria-label="Blue" valueLabelDisplay="auto" />
+                    <Slider defaultValue={this.state.valueGreen} aria-label="Green" valueLabelDisplay="auto" />
+                    <Slider
+                        onChange={() => { console.log(this.state.value) }} />
                 </div>
             </>
         );

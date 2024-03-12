@@ -13,17 +13,19 @@ class App extends Component {
         }
     }
 
+    // Cambio ROJO
     handleSliderChangeRed = (event) => {
-        console.log({ valueRed: event.target.value })
         this.setState({ valueRed: event.target.value })
-
     };
 
+    // Cambio AZUL
     handleSliderChangeBlue = (event) => {
-        console.log({ valueBlue: event.target.value })
+        this.setState({ valueBlue: event.target.value })
     };
+
+    // Cambio VERDE
     handleSliderChangeGreen = (event) => {
-        console.log({ valueGreen: event.target.value })
+        this.setState({ valueGreen: event.target.value })
     };
 
     render() {
@@ -31,8 +33,8 @@ class App extends Component {
             <>
                 <h1>Control RGBA</h1>
 
-                <div className='frame' style={{ backgroundColor: `rgb(${this.state.valueRed}, ${this.state.valueGreen}, ${this.state.valueBlue})` }}>
-                    {/* Contenido de la clase .frame */}
+                <div className='frame'
+                    style={{ backgroundColor: `rgb(${this.state.valueRed}, ${this.state.valueGreen}, ${this.state.valueBlue})` }}>
                 </div>
 
                 <div className='sliders'>
@@ -44,7 +46,6 @@ class App extends Component {
                         valueLabelDisplay="auto"
                         onChange={this.handleSliderChangeRed}
                         key={0}
-                        value={this.state.red}
                     />
                     <Slider
                         defaultValue={this.state.valueBlue}

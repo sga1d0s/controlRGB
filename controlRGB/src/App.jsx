@@ -6,20 +6,22 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // valueRed: 0,
-            
+            valueRed: 0,
             valueBlue: 0,
             valueGreen: 0,
         }
     }
 
-    // handleSlide(value) {
-    //     console.log(value)
-    // }
-
-    handleSliderChange = (event) => {
+    handleSliderChangeRed = (event) => {
         console.log({ valueRed: event.target.value })
-      };
+    };
+
+    handleSliderChangeBlue = (event) => {
+        console.log({ valueBlue: event.target.value })
+    };
+    handleSliderChangeGreen = (event) => {
+        console.log({ valueGreen: event.target.value })
+    };
 
     render() {
         return (
@@ -32,15 +34,24 @@ class App extends Component {
                 <div className='sliders'>
 
                     <Slider
-                        // defaultValue={this.state.valueRed}
-                        defaultValue={0}
-                        aria-label="Red"
+                        defaultValue={this.state.valueRed}
+                        aria-label="red"
                         valueLabelDisplay="auto"
-                        onChange={this.handleSliderChange}
+                        onChange={this.handleSliderChangeRed}
+                    />
+                    <Slider
+                        defaultValue={this.state.valueBlue}
+                        aria-label="blue"
+                        valueLabelDisplay="auto"
+                        onChange={this.handleSliderChangeBlue}
+                    />
+                    <Slider
+                        defaultValue={this.state.valueGreen}
+                        aria-label="green"
+                        valueLabelDisplay="auto"
+                        onChange={this.handleSliderChangeGreen}
                     />
 
-                    <Slider defaultValue={this.state.valueBlue} aria-label="Blue" valueLabelDisplay="auto" />
-                    <Slider defaultValue={this.state.valueGreen} aria-label="Green" valueLabelDisplay="auto" />
 
                 </div>
             </>

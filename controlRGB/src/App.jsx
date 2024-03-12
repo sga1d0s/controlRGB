@@ -13,7 +13,7 @@ class App extends Component {
         }
     }
 
-    // Cambio UNICO
+    // Cambio color
     handleSliderChange = (event) => {
         if (event.target.name == "red") {
             this.setState({ valueRed: event.target.value })
@@ -32,18 +32,24 @@ class App extends Component {
     render() {
         return (
             <>
-                <h1>Control RGBA</h1>
+                <h1>Control&nbsp;
+                    <span style={{color:`red`}}>R</span>
+                    <span style={{color:`green`}}>G</span>
+                    <span style={{color:`blue`}}>B</span>
+                    <span style={{color:`black`}}>A</span>
+                </h1>
 
                 <div className='frame'
-                    // Cambio de estilo literales `${valor}`
-                    style={{ backgroundColor: `rgba(${this.state.valueRed}, ${this.state.valueGreen}, ${this.state.valueBlue}, ${this.state.opacity / 100})`,
-                    boxShadow: `10px 10px 10px rgba(${this.state.valueRed}, ${this.state.valueGreen}, ${this.state.valueBlue}, ${this.state.opacity / 190})` }}>
+                    // Cambio de estilo literales style={{`${valor}`}}
+                    style={{
+                        backgroundColor: `rgba(${this.state.valueRed}, ${this.state.valueGreen}, ${this.state.valueBlue}, ${this.state.opacity / 100})`,
+                        boxShadow: `10px 10px 10px rgba(${this.state.valueRed}, ${this.state.valueGreen}, ${this.state.valueBlue}, ${this.state.opacity / 190})`
+                    }}>
                 </div>
 
                 <div className='sliders'>
-
                     <div className='contSlider'>
-                        <label style={{color:`red`}}>RED</label>
+                        <label style={{ color: `red` }}>RED</label>
                         <Slider
                             // defaultValue={this.state.valueBlue}
                             value={this.state.valueRed}
@@ -56,7 +62,20 @@ class App extends Component {
                     </div>
 
                     <div className='contSlider'>
-                        <label style={{color: `blue`}}>BLUE</label>
+                        <label style={{ color: `green` }}>GREEN</label>
+                        <Slider
+                            // defaultValue={this.state.valueBlue}
+                            value={this.state.valueGreen}
+                            onChange={this.handleSliderChange}
+                            name="green"
+                            min={0}
+                            max={255}
+                            valueLabelDisplay='on'
+                        />
+                    </div>
+
+                    <div className='contSlider'>
+                        <label style={{ color: `blue` }}>BLUE</label>
                         <Slider
                             // defaultValue={this.state.valueBlue}
                             value={this.state.valueBlue}
@@ -68,18 +87,6 @@ class App extends Component {
                         />
                     </div>
 
-                    <div className='contSlider'>
-                        <label style={{color: `green`}}>GREEN</label>
-                        <Slider
-                            // defaultValue={this.state.valueBlue}
-                            value={this.state.valueGreen}
-                            onChange={this.handleSliderChange}
-                            name="green"
-                            min={0}
-                            max={255}
-                            valueLabelDisplay='on'
-                        />
-                    </div>
                     <div className='contSlider'>
                         <label htmlFor="">OPACITY</label>
                         <Slider

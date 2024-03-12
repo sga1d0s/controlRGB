@@ -8,12 +8,13 @@
 .contSlider{
     text-align: left;
     display: flex;
-    padding: 1em;
+    padding-top: 3em;
 }
 
 label{
     margin-right: 1em;
     min-width: 4em;
+    font-weight: bolder;
 }
 
 .sliders{

@@ -9,23 +9,20 @@ class App extends Component {
             valueRed: 0,
             valueBlue: 0,
             valueGreen: 0,
-            index: 0,
         }
     }
 
-    // Cambio ROJO
-    handleSliderChangeRed = (event) => {
-        this.setState({ valueRed: event.target.value })
-    };
-
-    // Cambio AZUL
-    handleSliderChangeBlue = (event) => {
-        this.setState({ valueBlue: event.target.value })
-    };
-
-    // Cambio VERDE
-    handleSliderChangeGreen = (event) => {
-        this.setState({ valueGreen: event.target.value })
+    // Cambio UNICO
+    handleSliderChangeColor = (event) => {
+        if (event.target.name == "red") {
+            this.setState({ valueRed: event.target.value })
+        }
+        if (event.target.name == "blue") {
+            this.setState({ valueBlue: event.target.value })
+        }
+        if (event.target.name == "green") {
+            this.setState({ valueGreen: event.target.value })
+        }
     };
 
     render() {
@@ -34,32 +31,39 @@ class App extends Component {
                 <h1>Control RGBA</h1>
 
                 <div className='frame'
+                    // Cambio de estilo literales `${valor}`
                     style={{ backgroundColor: `rgb(${this.state.valueRed}, ${this.state.valueGreen}, ${this.state.valueBlue})` }}>
                 </div>
 
                 <div className='sliders'>
 
+                    <label htmlFor="">RED</label>
                     <Slider
-                        id="red"
-                        defaultValue={this.state.valueRed}
-                        aria-label="red"
-                        valueLabelDisplay="auto"
-                        onChange={this.handleSliderChangeRed}
-                        key={0}
+                        // defaultValue={this.state.valueBlue}
+                        value={this.state.valueRed}
+                        onChange={this.handleSliderChangeColor}
+                        name="red"
+                        min={0}
+                        max={255}
+                        valueLabelDisplay='on'
                     />
+                    <label htmlFor="">BLUE</label>
                     <Slider
-                        defaultValue={this.state.valueBlue}
-                        aria-label="blue"
-                        valueLabelDisplay="auto"
-                        onChange={this.handleSliderChangeBlue}
-                        key={1}
+                        value={this.state.valueBlue}
+                        onChange={this.handleSliderChangeColor}
+                        name="blue"
+                        min={0}
+                        max={255}
+                        valueLabelDisplay='on'
                     />
+                    <label htmlFor="">GREEN</label>
                     <Slider
-                        defaultValue={this.state.valueGreen}
-                        aria-label="green"
-                        valueLabelDisplay="auto"
-                        onChange={this.handleSliderChangeGreen}
-                        key={2}
+                        value={this.state.valueGreen}
+                        onChange={this.handleSliderChangeColor}
+                        name="green"
+                        min={0}
+                        max={255}
+                        valueLabelDisplay='on'
                     />
 
 

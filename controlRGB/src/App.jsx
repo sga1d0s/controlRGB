@@ -41,7 +41,7 @@ class App extends Component {
             this.setState({radius: event.target.value})
         }
         if (event.target.name == "scale"){
-            this.setState({scale: event.target.value});
+            this.setState({scale: event.target.value})
         }
 
     })
@@ -61,9 +61,8 @@ class App extends Component {
                     style={{
                         backgroundColor: `rgba(${this.state.valueRed}, ${this.state.valueGreen}, ${this.state.valueBlue}, ${this.state.opacity / 100})`,
                         boxShadow: `10px 10px 10px rgba(${this.state.valueRed}, ${this.state.valueGreen}, ${this.state.valueBlue}, ${this.state.opacity / 190})`,
-                        transform: `rotate(${this.state.degrees}deg)`,
+                        transform: `rotate(${this.state.degrees}deg) scale(${this.state.scale}%)`,
                         borderRadius: `${this.state.radius}%`,
-                        transform: `scale(${this.state.scale}%)`,
                     }}>
                 </div>
 

@@ -11,9 +11,9 @@ RUN npm ci
 # Copiamos el resto del código
 COPY . .
 
-# Generamos el build estático (dist/)
+# Fase builder → usa src/ para generar dist/
 RUN npm run build
 
-# Stage 2: server
-FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Fase servidor → sirve SOLO lo de dist/
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /app/dist/. /usr/share/nginx/html

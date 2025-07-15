@@ -8,20 +8,9 @@ COPY package*.json vite.config.js ./
 # Instalamos dependencias
 RUN npm ci
 
-# Copiamos el resto del código
-COPY public/ ./public
-COPY src/    ./src
-
-# Generamos el build estático (dist/)
-# RUN npm run build
+# 2: copiamos TODO lo demás de la raíz (incluye archivos sueltos)
+COPY . .
 
 # Stage 2: server
 FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# (Opcional) puedes añadir un healthcheck
-HEALTHCHECK --interval=30s --timeout=5s \
-  CMD wget --spider --quiet http://localhost/ || exit 1
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+COPY /app/dist /usr/share/nginx/html

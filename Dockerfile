@@ -9,8 +9,7 @@ COPY package*.json vite.config.js ./
 RUN npm ci
 
 # Copiamos el resto del código
-COPY public/ ./public
-COPY src/    ./src
+COPY . .
 
 # Generamos el build estático (dist/)
 RUN npm run build

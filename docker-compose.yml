@@ -7,3 +7,9 @@ services:
     ports:
       - "80:80"
     restart: unless-stopped
+    # (Opcional) healthcheck también en compose
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "--quiet", "http://localhost/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

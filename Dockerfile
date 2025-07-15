@@ -13,7 +13,7 @@ COPY public/ ./public
 COPY src/    ./src
 
 # Generamos el build estático (dist/)
-RUN npm run build
+# RUN npm run build
 
 # Stage 2: server
 FROM nginx:alpine

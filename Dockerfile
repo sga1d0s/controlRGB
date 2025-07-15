@@ -1,19 +1,20 @@
 # Stage 1: builder
-FROM node:18-alpine AS builder
+FROM node:18-alpine AS build-stage
 WORKDIR /app
-
-# Solo copiamos lo necesario para instalar deps
 COPY package*.json vite.config.js ./
-
-# Instalamos dependencias
 RUN npm ci
-
-# Copiamos el resto del código
-COPY . .
-
-# Fase builder → usa src/ para generar dist/
+COPY public/ ./public
+COPY src/    ./src
 RUN npm run build
 
-# Fase servidor → sirve SOLO lo de dist/
+# Stage 2: server
+FROM nginx:alpine AS production-stage
+
+# Limpia el html por defecto
 RUN rm -rf /usr/share/nginx/html/*
-COPY --from=builder /app/dist/. /usr/share/nginx/html
+
+# Copia solo lo que necesitas del builder
+COPY --from=build-stage /app/dist/. /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
